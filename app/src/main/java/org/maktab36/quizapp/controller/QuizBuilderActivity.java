@@ -2,7 +2,6 @@ package org.maktab36.quizapp.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PatternMatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,8 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.maktab36.quizapp.R;
-
-import java.util.regex.Pattern;
 
 public class QuizBuilderActivity extends AppCompatActivity {
     private Button mButtonStart;
@@ -52,13 +49,13 @@ public class QuizBuilderActivity extends AppCompatActivity {
     }
 
     private boolean checkValidation(String input) {
-        Pattern p=Pattern.compile("[\\s]*[,]");
-        return true;
+        String regex = "(\\{" +
+                "(\\[(\\{“.*”\\})(\\s*,\\s*)((\\{(true|false)\\}(\\s*,\\s*)){2})(\\{(green|red|black|blue)\\})](\\s*,\\s*))+" +
+                "(\\[(\\{“.*”\\})(\\s*,\\s*)((\\{(true|false)\\}(\\s*,\\s*)){2})(\\{(green|red|black|blue)\\})])" +
+                "\\})" +
+                "(\\s*,\\s*)" +
+                "(\\{\\d+\\})";
+
+        return input.matches(regex);
     }
 }
-/*
-{[{“Tehran in iran”}, {true}, {false}, {green}],
-[{“iran language is english”}, {false} {true}, {red}],
-[{“England is in usa”}, {false}, {false}, {black}]} ,
- {30}
- */
