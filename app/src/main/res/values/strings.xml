@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+    <string name="button_true">درست</string>
+    <string name="button_false">نادرست</string>
+    <string name="button_previous">قبلي</string>
+    <string name="button_next">بعدي</string>
+    <string name="button_first">اولين سوال</string>
+    <string name="button_last">آخرين سوال</string>
+    <string name="button_Try_Again">تلاش دوباره</string>
+    <string name="button_cheat">تقلب</string>
+    <string name="button_show_cheat">تقلب</string>
+    <string name="button_cheat_back">بازگشت</string>
+    <string name="button_start">شروع</string>
+    <string name="button_setting">تنظيمات</string>
+    <string name="button_setting_save">ذخيره</string>
+    <string name="button_setting_discard">لغو</string>
+
+    <string name="toast_correct">جواب شما صحيح است!</string>
+    <string name="toast_incorrect">متاسفانه جواب شما صحيح نميباشد!!</string>
+    <string name="toast_Cheated">تقلب کار خوبی نیست.امتیاز شما اضافه نمیشود.</string>
+
+    <string name="question_australia">استرالیا بزرگ ترین قاره جهان است.</string>
+    <string name="question_oceans">اقیانوس آرام بزرگ ترین اقیانوس جهان است.</string>
+    <string name="question_mideast">همه کشورهای خاورمیانه عرب زبان هستند.</string>
+    <string name="question_africa">مصر در قاره آفریقا قرار دارد.</string>
+    <string name="question_americas">کشور آمریکا پرجمعیت ترین کشور دنیا است.</string>
+    <string name="question_asia">قاره آسیا در نیم کره جنوبی جهان واقع شده است.</string>
+
+    <string name="show_score">score : %1$d</string>
+    <string name="show_timer">second remaining : %1$d</string>
+    <string name="text_cheat">آیا برای تقلب مطمئن هستید؟</string>
+    <string name="edit_text_input">input</string>
+    <string name="text_setting_hide_buttons">نشان دادن يا مخفي كردن كليدها</string>
+    <string name="text_setting_change_background">تعويض رنگ پس زمينه</string>
+    <string name="text_setting_change_question_size">تعویض اندازه صورت سوال</string>
+    <string name="text_setting_change_grades">تغییر امتیاز پاسخ ها</string>
+    <string name="text_setting_positive_grade">امتیاز پاسخ درست :</string>
+    <string name="text_setting_negative_grade">امتیاز پاسخ نادرست :</string>
+    <string name="text_setting_disable_back">فعال کردن یا غیر فعال کردن کلید بازگشت</string>
+    <string name="text_setting_disable_time_out">فعال کردن یا غیر فعال کردن زمان</string>
+
+    <string name="input_wrong_format">فرمت ورودی درست نیست!!</string>
+
+
+    <string name="switch_hide_true">كليد درست</string>
+    <string name="switch_hide_false">كليد نادرست</string>
+    <string name="switch_hide_next">كليد بعدي</string>
+    <string name="switch_hide_previous">كليد قبلي</string>
+    <string name="switch_hide_first">كليد اولي</string>
+    <string name="switch_hide_last">كليد آخري</string>
+    <string name="switch_hide_cheat">كليد تقلب</string>
+    <string name="switch_disable_back">کلید بازگشت</string>
+    <string name="switch_disable_time_out">زمان</string>
+
+
+
+    <string name="radio_button_color_lightRed">قرمز روشن</string>
+    <string name="radio_button_color_lightBlue">آبي روشن</string>
+    <string name="radio_button_color_lightGreen">سبز روشن</string>
+    <string name="radio_button_color_white">سفيد</string>
+    <string name="radio_button_size_small">کوچک</string>
+    <string name="radio_button_size_medium">متوسط</string>
+    <string name="radio_button_size_large">بزرگ</string>
+
+</resources>

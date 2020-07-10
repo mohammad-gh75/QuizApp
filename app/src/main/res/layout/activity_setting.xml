@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.SettingActivity"
+    tools:visibility="visible">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/setting_hide_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_hide_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#AEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_hide_buttons"
+                android:textSize="24sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_true"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_false"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_next"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_previous"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_previous"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_first"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_last"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_last"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_hide_cheat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_hide_cheat"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_change_background_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewChangeBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#FFAEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_change_background"
+                android:textSize="24sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupColors"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checkedButton="@id/radioButtonWhite">
+
+                <RadioButton
+                    android:id="@+id/radioButtonLightRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_color_lightRed"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonLightGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_color_lightGreen"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonLightBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_color_lightBlue"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_color_white"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_change_question_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewChangeQuestionSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#FFAEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_change_question_size"
+                android:textSize="24sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSizes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checkedButton="@id/radioButtonLarge">
+
+                <RadioButton
+                    android:id="@+id/radioButtonSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_size_small"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_size_medium"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layoutDirection="rtl"
+                    android:padding="5dp"
+                    android:text="@string/radio_button_size_large"
+                    android:textSize="18sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_change_grade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewChangeGrades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFAEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_change_grades"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPositiveGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:padding="5dp"
+                    android:text="@string/text_setting_positive_grade"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextNumberSignedPositiveGrade"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="+6"
+                    android:inputType="numberSigned"
+                    android:layoutDirection="ltr"
+                    android:maxLength="3"
+                    android:text="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewNegativeGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:padding="5dp"
+                    android:text="@string/text_setting_negative_grade"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/editTextNumberSignedNegativeGrade"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="-3"
+                    android:inputType="numberSigned"
+                    android:layoutDirection="ltr"
+                    android:maxLength="3"
+                    android:text="0" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SettingDisableBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewDisableBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#FFAEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_disable_back"
+                android:textSize="24sp" />
+
+            <Switch
+                android:id="@+id/switchDisableBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_disable_back"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SettingDisableTimeOut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewDisableTimeOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="#FFAEABAB"
+                android:padding="5dp"
+                android:text="@string/text_setting_disable_time_out"
+                android:textSize="24sp" />
+
+            <Switch
+                android:id="@+id/switchDisableTimeOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="10dp"
+                android:checked="true"
+                android:layoutDirection="rtl"
+                android:padding="5dp"
+                android:text="@string/switch_disable_time_out"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_save_exit_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_setting_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_setting_save" />
+
+            <Button
+                android:id="@+id/button_setting_discard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_setting_discard" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
