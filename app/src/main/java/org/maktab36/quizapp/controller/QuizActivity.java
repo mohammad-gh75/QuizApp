@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,14 +73,16 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
         findAllViews();
         mQuestionBanks = parseQuestions(getIntent().getStringExtra(QuizBuilderActivity.EXTRA_INPUT));
         mAnsweredArray = new boolean[mQuestionBanks.length];
+        mCurrentTime = mTimeOut;
         loadState(savedInstanceState);
         updateQuestion();
         setClickListener();
-        startTimer(mTimeOut);
+        if (mModel == null || mModel.isTimeOutEnable()) {
+            startTimer(mCurrentTime);
+        }
     }
 
     @Override
@@ -89,6 +90,11 @@ public class QuizActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode != RESULT_OK || data == null) {
+            if (requestCode == REQUEST_CODE_SETTING_ACTIVITY) {
+                if (mModel == null || mModel.isTimeOutEnable()) {
+                    startTimer(mCurrentTime);
+                }
+            }
             return;
         }
         if (requestCode == REQUEST_CODE_CHEAT_ACTIVITY) {
@@ -98,7 +104,13 @@ public class QuizActivity extends AppCompatActivity {
 
         }
         if (requestCode == REQUEST_CODE_SETTING_ACTIVITY) {
+            if (mCountTime != null) {
+                mCountTime.cancel();
+            }
             mModel = (SettingModel) data.getSerializableExtra(SettingActivity.EXTRA_SETTING);
+            if (mModel == null || mModel.isTimeOutEnable()) {
+                startTimer(mCurrentTime);
+            }
             setSettings();
         }
     }
@@ -121,11 +133,12 @@ public class QuizActivity extends AppCompatActivity {
 
     private void setTimeOutEnabling() {
         if (mModel.isTimeOutEnable()) {
-            mCountTime.cancel();
             mTextViewTimer.setVisibility(View.VISIBLE);
-            startTimer(mCurrentTime);
         } else {
-            mCountTime.cancel();
+            if (mCountTime != null) {
+                mCountTime.cancel();
+            }
+            mCurrentTime = mTimeOut;
             mTextViewTimer.setVisibility(View.INVISIBLE);
         }
     }
@@ -169,7 +182,6 @@ public class QuizActivity extends AppCompatActivity {
                 endQuiz();
             }
         }.start();
-
     }
 
     private Question[] parseQuestions(String input) {
@@ -209,12 +221,9 @@ public class QuizActivity extends AppCompatActivity {
             mTextViewEndScore.setText(getString(R.string.show_score, mScore));
             mStartLayout.setVisibility(savedInstanceState.getInt(BUNDLE_KEY_START_VISIBILITY));
             mEndLayout.setVisibility(savedInstanceState.getInt(BUNDLE_KEY_END_VISIBILITY));
-            mTimeOut = savedInstanceState.getInt(BUNDLE_KEY_CURRENT_TIME);
+            mCurrentTime = savedInstanceState.getInt(BUNDLE_KEY_CURRENT_TIME);
 
             mModel = (SettingModel) savedInstanceState.getSerializable(BUNDLE_KEY_CURRENT_SETTING);
-        }
-        if(mTimeOut!=0){
-            startTimer(mTimeOut);
         }
         if (mModel != null) {
             setSettings();
@@ -320,6 +329,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void startSettingActivity() {
+        if (mCountTime != null) {
+            mCountTime.cancel();
+        }
         Intent intent = new Intent(QuizActivity.this, SettingActivity.class);
         if (mModel != null) {
             intent.putExtra(EXTRA_CURRENT_SETTING, mModel);
@@ -332,7 +344,6 @@ public class QuizActivity extends AppCompatActivity {
         Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
         intent.putExtra(EXTRA_CURRENT_ANSWER, currentAnswer);
         startActivityForResult(intent, REQUEST_CODE_CHEAT_ACTIVITY);
-        //startActivity(intent);
     }
 
     private void findAllViews() {
@@ -398,7 +409,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void endQuiz() {
-        if(mCountTime!=null) {
+        if (mCountTime != null) {
             mCountTime.cancel();
         }
         mStartLayout.setVisibility(View.GONE);
@@ -417,7 +428,12 @@ public class QuizActivity extends AppCompatActivity {
         }
         updateQuestion();
         mStartLayout.setVisibility(View.VISIBLE);
-        startTimer(mTimeOut);
+        if (mCountTime != null) {
+            mCountTime.cancel();
+        }
+        if (mModel == null || mModel.isTimeOutEnable()) {
+            startTimer(mTimeOut);
+        }
     }
 
     private boolean isAllAnswered() {

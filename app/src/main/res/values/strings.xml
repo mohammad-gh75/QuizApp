@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">QuizApp</string>
+    <string name="setting_label">Setting</string>
+    <string name="cheat_label">Cheat</string>
+    <string name="login_label">Login</string>
+    <string name="sign_up_label">Sign up</string>
+    <string name="quiz_builder_label">Quiz Builder</string>
 
     <string name="button_true">درست</string>
     <string name="button_false">نادرست</string>
