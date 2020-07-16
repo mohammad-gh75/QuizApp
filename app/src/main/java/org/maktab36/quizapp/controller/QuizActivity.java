@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.maktab36.quizapp.R;
+import org.maktab36.quizapp.model.LoginModel;
 import org.maktab36.quizapp.model.Question;
 import org.maktab36.quizapp.model.SettingModel;
 
@@ -30,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     public static final String BUNDLE_KEY_CURRENT_SETTING = "currentSetting";
     public static final String EXTRA_CURRENT_ANSWER = "org.maktab36.quizapp.currentAnswer";
     public static final String EXTRA_CURRENT_SETTING = "org.maktab36.quizapp.currentSetting";
+    public static final String EXTRA_CURRENT_INFO = "org.maktab36.quizapp.currentUserInfo";
 
     public static final int REQUEST_CODE_CHEAT_ACTIVITY = 0;
     public static final int REQUEST_CODE_SETTING_ACTIVITY = 1;
@@ -42,9 +44,11 @@ public class QuizActivity extends AppCompatActivity {
     private ImageButton mButtonFirst;
     private Button mButtonCheat;
     private Button mButtonSetting;
+    private Button mButtonLogOut;
     private TextView mTextViewQuestion;
     private TextView mTextViewScore;
     private TextView mTextViewEndScore;
+    private TextView mTextViewUsername;
     private Button mButtonTryAgain;
     private ViewGroup mEndLayout;
     private ViewGroup mStartLayout;
@@ -56,6 +60,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mTextViewTimer;
     private CountDownTimer mCountTime;
     private SettingModel mModel;
+    private LoginModel mInfo;
     /*private Question[] mQuestionBanks = {
             new Question(R.string.question_australia, false),
             new Question(R.string.question_oceans, true),
@@ -74,6 +79,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         findAllViews();
+        loadInfo();
         mQuestionBanks = parseQuestions(getIntent().getStringExtra(QuizBuilderActivity.EXTRA_INPUT));
         mAnsweredArray = new boolean[mQuestionBanks.length];
         mCurrentTime = mTimeOut;
@@ -83,6 +89,12 @@ public class QuizActivity extends AppCompatActivity {
         if (mModel == null || mModel.isTimeOutEnable()) {
             startTimer(mCurrentTime);
         }
+    }
+
+    private void loadInfo() {
+        mInfo = (LoginModel) getIntent().getSerializableExtra(QuizBuilderActivity.EXTRA_LOGIN_INFO);
+        String username = getString(R.string.show_username, mInfo.getUsername());
+        mTextViewUsername.setText(username);
     }
 
     @Override
@@ -270,6 +282,14 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        mButtonLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startLoginActivity();
+                finish();
+            }
+        });
+
         mButtonTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -328,6 +348,12 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    private void startLoginActivity() {
+        Intent intent = new Intent(QuizActivity.this, LoginActivity.class);
+        intent.putExtra(EXTRA_CURRENT_INFO, mInfo);
+        startActivity(intent);
+    }
+
     private void startSettingActivity() {
         if (mCountTime != null) {
             mCountTime.cancel();
@@ -363,6 +389,8 @@ public class QuizActivity extends AppCompatActivity {
         mTextViewTimer = findViewById(R.id.text_view_timer);
         mButtonSetting = findViewById(R.id.button_setting);
         mRootLayout = findViewById(R.id.quizActivityRootLayout);
+        mTextViewUsername = findViewById(R.id.text_view_quiz_username);
+        mButtonLogOut = findViewById(R.id.button_log_out);
     }
 
     private void updateQuestion() {

@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.QuizBuilderActivity">
 
+    <TextView
+        android:id="@+id/text_view_builder_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="5dp"
+        android:text="@string/show_username"
+        android:textSize="18sp" />
+
     <EditText
         android:id="@+id/edit_text_input"
         android:layout_width="match_parent"
-        android:layout_height="680dp"
-        android:layout_gravity="center_horizontal|top"
+        android:layout_height="500dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="top"
         android:hint="@string/edit_text_input"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"

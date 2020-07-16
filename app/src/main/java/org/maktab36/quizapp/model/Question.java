@@ -3,9 +3,9 @@ package org.maktab36.quizapp.model;
 public class Question {
     private String mQuestionText;
     private boolean mAnswerTrue;
-    private boolean mAnswered=false;
+    private boolean mAnswered = false;
     private boolean mIsCheat;
-    private boolean mCheated=false;
+    private boolean mCheated = false;
     private int mColor;
 
     public boolean isCheated() {

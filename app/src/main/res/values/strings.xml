@@ -6,6 +6,10 @@
     <string name="sign_up_label">Sign up</string>
     <string name="quiz_builder_label">Quiz Builder</string>
 
+
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+
     <string name="button_true">درست</string>
     <string name="button_false">نادرست</string>
     <string name="button_previous">قبلي</string>
@@ -20,10 +24,14 @@
     <string name="button_setting">تنظيمات</string>
     <string name="button_setting_save">ذخيره</string>
     <string name="button_setting_discard">لغو</string>
+    <string name="button_Login">Login</string>
+    <string name="button_sign_up">Sign up</string>
+    <string name="button_log_out">Log Out</string>
 
     <string name="toast_correct">جواب شما صحيح است!</string>
     <string name="toast_incorrect">متاسفانه جواب شما صحيح نميباشد!!</string>
     <string name="toast_Cheated">تقلب کار خوبی نیست.امتیاز شما اضافه نمیشود.</string>
+    <string name="toast_incorrect_info">نام كاربري يا رمز عبور صحيح نميباشد.</string>
 
     <string name="question_australia">استرالیا بزرگ ترین قاره جهان است.</string>
     <string name="question_oceans">اقیانوس آرام بزرگ ترین اقیانوس جهان است.</string>
@@ -34,6 +42,7 @@
 
     <string name="show_score">score : %1$d</string>
     <string name="show_timer">second remaining : %1$d</string>
+    <string name="show_username">نام کاربری : %1$s</string>
     <string name="text_cheat">آیا برای تقلب مطمئن هستید؟</string>
     <string name="edit_text_input">input</string>
     <string name="text_setting_hide_buttons">نشان دادن يا مخفي كردن كليدها</string>
@@ -59,7 +68,6 @@
     <string name="switch_disable_time_out">زمان</string>
 
 
-
     <string name="radio_button_color_lightRed">قرمز روشن</string>
     <string name="radio_button_color_lightBlue">آبي روشن</string>
     <string name="radio_button_color_lightGreen">سبز روشن</string>
@@ -67,5 +75,7 @@
     <string name="radio_button_size_small">کوچک</string>
     <string name="radio_button_size_medium">متوسط</string>
     <string name="radio_button_size_large">بزرگ</string>
+
+    <string name="snack_bar_welcome">کاربر %1$s خوش آمدید.</string>
 
 </resources>

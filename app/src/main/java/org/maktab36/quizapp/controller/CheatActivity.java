@@ -13,11 +13,13 @@ import org.maktab36.quizapp.R;
 
 public class CheatActivity extends AppCompatActivity {
     private static final String BUNDLE_KEY_CURRENT_ANSWER = "currentAnswer";
+    private static final String BUNDLE_KEY_IS_CHEATED = "isCheated";
     public static final String EXTRA_IS_CHEATED = "org.maktab36.quizapp.isCheated";
     private TextView mTextViewAnswer;
     private Button mButtonCheat;
     private Button mButtonCheatBack;
     private boolean mCurrentAnswer;
+    private boolean mIsCheated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class CheatActivity extends AppCompatActivity {
     private void loadState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             mTextViewAnswer.setText(savedInstanceState.getCharSequence(BUNDLE_KEY_CURRENT_ANSWER));
+            mIsCheated = savedInstanceState.getBoolean(BUNDLE_KEY_IS_CHEATED, false);
         }
     }
 
@@ -51,6 +54,7 @@ public class CheatActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putCharSequence(BUNDLE_KEY_CURRENT_ANSWER, mTextViewAnswer.getText());
+        outState.putBoolean(BUNDLE_KEY_IS_CHEATED, mIsCheated);
     }
 
     private void setClickListener() {
@@ -62,23 +66,24 @@ public class CheatActivity extends AppCompatActivity {
                 } else {
                     mTextViewAnswer.setText(R.string.button_false);
                 }
-
-                saveResult(true);
+                mIsCheated = true;
+//                saveResult();
             }
         });
 
         mButtonCheatBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saveResult();
                 finish();
             }
         });
     }
 
-    private void saveResult(boolean isCheated){
-        Intent intent=new Intent();
-        intent.putExtra(EXTRA_IS_CHEATED,isCheated);
+    private void saveResult() {
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_IS_CHEATED, mIsCheated);
 
-        setResult(RESULT_OK,intent);
+        setResult(RESULT_OK, intent);
     }
 }
