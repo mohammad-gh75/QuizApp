@@ -19,6 +19,7 @@ import org.maktab36.quizapp.R;
 import org.maktab36.quizapp.model.LoginModel;
 import org.maktab36.quizapp.model.Question;
 import org.maktab36.quizapp.model.SettingModel;
+import org.maktab36.quizapp.model.Singleton;
 
 public class QuizActivity extends AppCompatActivity {
     public static final String TAG = "quizApp";
@@ -31,7 +32,6 @@ public class QuizActivity extends AppCompatActivity {
     public static final String BUNDLE_KEY_CURRENT_SETTING = "currentSetting";
     public static final String EXTRA_CURRENT_ANSWER = "org.maktab36.quizapp.currentAnswer";
     public static final String EXTRA_CURRENT_SETTING = "org.maktab36.quizapp.currentSetting";
-    public static final String EXTRA_CURRENT_INFO = "org.maktab36.quizapp.currentUserInfo";
 
     public static final int REQUEST_CODE_CHEAT_ACTIVITY = 0;
     public static final int REQUEST_CODE_SETTING_ACTIVITY = 1;
@@ -92,8 +92,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void loadInfo() {
-        mInfo = (LoginModel) getIntent().getSerializableExtra(QuizBuilderActivity.EXTRA_LOGIN_INFO);
-        String username = getString(R.string.show_username, mInfo.getUsername());
+        String username = getString(R.string.show_username,
+                Singleton.getInstance().getCurrentUser().getUsername());
         mTextViewUsername.setText(username);
     }
 
@@ -350,7 +350,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void startLoginActivity() {
         Intent intent = new Intent(QuizActivity.this, LoginActivity.class);
-        intent.putExtra(EXTRA_CURRENT_INFO, mInfo);
         startActivity(intent);
     }
 

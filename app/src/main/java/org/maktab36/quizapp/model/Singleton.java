@@ -6,6 +6,7 @@ import java.util.List;
 public class Singleton {
     private static Singleton INSTANCE = null;
     private static List<LoginModel> users = new ArrayList<>();
+    private LoginModel mCurrentUser;
 
     private Singleton() {
     }
@@ -25,6 +26,14 @@ public class Singleton {
 
     public boolean containUser(LoginModel user) {
         return users.contains(user);
+    }
+
+    public LoginModel getCurrentUser() {
+        return mCurrentUser;
+    }
+
+    public void setCurrentUser(LoginModel currentUser) {
+        mCurrentUser = currentUser;
     }
 }
 

@@ -11,15 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.maktab36.quizapp.R;
 import org.maktab36.quizapp.model.LoginModel;
+import org.maktab36.quizapp.model.Singleton;
 
 public class QuizBuilderActivity extends AppCompatActivity {
     private Button mButtonStart;
     private TextView mTextInput;
     private TextView mTextViewUsername;
-    private LoginModel mInfo;
     public static final String EXTRA_INPUT = "org.maktab36.quizapp.input";
-    public static final String EXTRA_LOGIN_INFO = "org.maktab36.quizapp.Builder.loginInfo";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +29,8 @@ public class QuizBuilderActivity extends AppCompatActivity {
     }
 
     private void loadInfo() {
-        mInfo = (LoginModel) getIntent().getSerializableExtra(LoginActivity.EXTRA_LOGIN_INFO);
-        String username = getString(R.string.show_username, mInfo.getUsername());
+        String username = getString(R.string.show_username,
+                Singleton.getInstance().getCurrentUser().getUsername());
         mTextViewUsername.setText(username);
     }
 
@@ -50,7 +48,6 @@ public class QuizBuilderActivity extends AppCompatActivity {
                 if (checkValidation(input)) {
                     Intent intent = new Intent(QuizBuilderActivity.this, QuizActivity.class);
                     intent.putExtra(EXTRA_INPUT, input);
-                    intent.putExtra(EXTRA_LOGIN_INFO, mInfo);
                     startActivity(intent);
                     finish();
                 } else {

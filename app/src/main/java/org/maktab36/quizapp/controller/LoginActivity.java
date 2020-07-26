@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,9 +21,9 @@ import org.maktab36.quizapp.model.Singleton;
 
 public class LoginActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_LOGIN_ACTIVITY = 2;
-    public static final String EXTRA_LOGIN_INFO = "org.maktab36.quizapp.loginInfo";
     public static final String EXTRA_USERNAME = "org.maktab36.quizapp.username";
     public static final String EXTRA_PASSWORD = "org.maktab36.quizapp.password";
+    public static final String BUNDLE_CURRENT_INFO = "currentInfo";
     private EditText mEditTextUsername;
     private EditText mEditTextPassword;
     private Button mButtonLogin;
@@ -33,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if(savedInstanceState!=null){
+            mInfo= (LoginModel) savedInstanceState.getSerializable(BUNDLE_CURRENT_INFO);
+        }
 
         findAllViews();
         if (mInfo == null) {
@@ -41,8 +45,14 @@ public class LoginActivity extends AppCompatActivity {
         setListeners();
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(BUNDLE_CURRENT_INFO,mInfo);
+    }
+
     private void loadCurrentUserInfo() {
-        mInfo = (LoginModel) getIntent().getSerializableExtra(QuizActivity.EXTRA_CURRENT_INFO);
+        mInfo = Singleton.getInstance().getCurrentUser();
         if (mInfo != null) {
             mEditTextUsername.setText(mInfo.getUsername());
             mEditTextPassword.setText(mInfo.getPassword());
@@ -61,8 +71,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (checkInfo()) {
+                    mInfo.setUsername(mEditTextUsername.getText().toString());
+                    mInfo.setPassword(mEditTextPassword.getText().toString());
+                    Singleton.getInstance().setCurrentUser(mInfo);
                     showSnackBar(view);
-                    new CountDownTimer(5000, 10000) {
+                    new CountDownTimer(3500, 10000) {
 
                         @Override
                         public void onTick(long l) {
@@ -94,7 +107,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showSnackBar(View view) {
-        String username = getString(R.string.snack_bar_welcome, mInfo.getUsername());
+        String username = getString(R.string.snack_bar_welcome,
+                Singleton.getInstance().getCurrentUser().getUsername());
         Snackbar snackbar = Snackbar
                 .make(view, username, Snackbar.LENGTH_LONG)
                 .setActionTextColor(Color.DKGRAY)
@@ -128,7 +142,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void startQuizBuilderActivity() {
         Intent intent = new Intent(LoginActivity.this, QuizBuilderActivity.class);
-        intent.putExtra(EXTRA_LOGIN_INFO, mInfo);
         startActivity(intent);
     }
 }
